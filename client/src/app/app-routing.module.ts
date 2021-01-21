@@ -19,7 +19,7 @@ const routes: Routes = [
     children:
     [
       {path:'members',component:MemberListComponent},
-      {path:'members/:id',component:MembeDetailComponent},
+      {path:'members/:username',component:MembeDetailComponent},
       {path:'lists',component:ListsComponent},
       {path:'messages',component:MessagesComponent},
     ]
