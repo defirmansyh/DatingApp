@@ -25,6 +25,7 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
+import { BnNgIdleService } from 'bn-ng-idle';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi:true},
     {provide:HTTP_INTERCEPTORS, useClass:JwtInterceptor, multi:true},
-    {provide:HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi:true}
+    {provide:HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi:true},
+    BnNgIdleService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
