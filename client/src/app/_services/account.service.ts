@@ -10,8 +10,8 @@ import { User } from '../_models/user';
 })
 export class AccountService {
   baseUrl = environment.apiUrl;
-  private currentUSerSource = new ReplaySubject<User>(1);
-  currentUsers$ = this.currentUSerSource.asObservable();
+  private currentUserSource = new ReplaySubject<User>(1);
+  currentUsers$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -38,11 +38,11 @@ export class AccountService {
 
   setCurrentUser(user:User){
     localStorage.setItem("user",JSON.stringify(user));
-    this.currentUSerSource.next(user);
+    this.currentUserSource.next(user);
   }
 
   logout(){
     localStorage.removeItem("user");
-    this.currentUSerSource.next(null);
+    this.currentUserSource.next(null);
   }
 }
