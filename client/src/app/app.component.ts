@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
+import { PresenceService } from './_services/presence.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit{
   users: any;
 
   constructor(private accountService : AccountService, private bnIdle: BnNgIdleService, 
-    private router: Router) {
+    private router: Router, private presence: PresenceService) {
     // this.bnIdle.startWatching(60).subscribe((isTimedOut: boolean) => {
     //   if (localStorage.getItem("user") !== null) {
     //     if (isTimedOut) {
@@ -32,7 +33,10 @@ export class AppComponent implements OnInit{
 
   setCurrentUser(){
     const user:User = JSON.parse(localStorage.getItem("user"));
-    this.accountService.setCurrentUser(user);
+    if (user) {
+      this.accountService.setCurrentUser(user);
+      this.presence.createHubConnetion(user);
+    }
   }
   
 }
