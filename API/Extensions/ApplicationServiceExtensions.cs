@@ -41,7 +41,7 @@ namespace API.Extensions
                 if (env == "Development")
                 {
                     // Use connection string from file.
-                    connStr = config.GetConnectionString("SqlLiteConnection");
+                    connStr = config.GetConnectionString("PostgreSqlConnection");
                 }
                 else
                 {

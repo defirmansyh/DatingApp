@@ -6,8 +6,11 @@
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.card-body {
     overflow-y: scroll;
-    max-height: 500px;
+    height: 535px;
 }
 
 .chat li {
